@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "850284086335",
+    "project_id": "firebase-guernica"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850284086335:android:6cec6db8f959431a",
+        "android_client_info": {
+          "package_name": "mx.wedevelop.guernica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850284086335-r3344d18spu45mdspsi9nfrdb8ph56u0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.wedevelop.guernica",
+            "certificate_hash": "3910EF8726D7D978F954A65C407219B995503551"
+          }
+        },
+        {
+          "client_id": "850284086335-9l060401lrvl7eoieq6au8tp9elvo8vb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVVwj-ibYOu47aLKG-ltRYHAFBJAURugE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

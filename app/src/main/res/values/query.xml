@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="database_name">guernica.db</string>
+    <string name="database_date_format">yyyy-MM-dd HH:mm:ss</string>
+
+    <string name="table_user">
+        create table user (
+          id integer primary key autoincrement,
+          display_name text not null,
+          email text not null,
+          avatar text not null,
+          created_date datetime default current_timestamp
+        )
+    </string>
+    <string name="drop_table_user">drop table if exists user</string>
+    <string name="table_shift">
+        create table shift (
+          id integer primary key autoincrement,
+          submitted integer default 0,
+          start_time datetime default current_timestamp,
+          end_time datetime,
+          user_id integer not null,
+          foreign key(user_id) references user(id)
+        )
+    </string>
+    <string name="drop_table_shift">drop table if exists shift</string>
+     <string name="table_order">
+        create table orders (
+          id integer primary key autoincrement,
+          created_date datetime default current_timestamp,
+          shift_id integer not null,
+          foreign key(shift_id) references shift(id)
+        )
+    </string>
+    <string name="drop_table_order">drop table if exists orders</string>
+     <string name="table_product">
+        create table product (
+          id integer primary key autoincrement,
+          quantity integer not null,
+          order_id integer not null,
+          product_type_id integer not null,
+          created_date datetime default current_timestamp,
+          foreign key(order_id) references orders(id),
+          foreign key(product_type_id) references product_type(id)
+        )
+    </string>
+    <string name="drop_table_product">drop table if exists product</string>
+    <string name="table_product_type">
+        create table product_type (
+          id integer primary key autoincrement,
+          name text not null,
+          description text not null,
+          unit_cost real not null,
+          created_date datetime default current_timestamp
+        )
+    </string>
+    <string name="drop_table_product_type">drop table if exists product_type</string>
+</resources>

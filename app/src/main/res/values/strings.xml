@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Guernica</string>
+    <string name="contact_mail">contact@aguasguernica.com</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="action_sign_in">Sign in</string>
+
+    <string name="signed_out">Signed Out</string>
+    <string name="revoke_access">Revoke Access</string>
+    <string name="sign_in_email_cta">Sign In with Email</string>
+    <string name="sign_out">Sign Out</string>
+
+    <string name="nav_shift">Shift</string>
+    <string name="nav_report">Report</string>
+    <string name="nav_sync">Sync</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_product">Product</string>
+    <string name="nav_logout">Logout</string>
+    <string name="nav_communicate">Communicate</string>
+    <string name="nav_help">Help</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="delete_account">Close session</string>
+
+    <string name="quantity_fmt">%d</string>
+    <string name="income_fmt">$%.0f</string>
+
+    <string name="income">Income</string>
+    <string name="sells">Sells</string>
+
+    <string name="qty">#</string>
+    <string name="date">Date</string>
+    <string name="cost">Cost</string>
+
+    <string name="default_message">Do you agree?</string>
+    <string name="agree">Agree</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="shift_dialog">Shift Dialog</string>
+    <string name="shift_close_msg">Do you want to close the current shift?</string>
+
+    <string name="sales_instructions">Select the quantities you are selling.</string>
+    <string name="sales_error">You have to add products to make an order.</string>
+
+    <string name="main_header">Current Shift</string>
+    <string name="sales_header">New Sale</string>
+    <string name="shift_header">Current Shift</string>
+    <string name="sync_header">Stored Shifts</string>
+    <string name="sync_sub_header">Synchronize in order to see charts on our site.</string>
+    <string name="report_header">Report</string>
+    <string name="report_sub_header">Here you have an overview of your business.</string>
+    <string name="product_header">Product Types</string>
+    <string name="product_sub_header">These are the products you can sell.</string>
+    <string name="product_name">Name</string>
+    <string name="product_description">Description</string>
+    <string name="product_price">Price</string>
+
+    <string name="number_field_error_msg">%s must be a number.</string>
+    <string name="product_field_error_msg">You need to provide a %s.</string>
+
+    <string name="product_delete_dialog">Delete Product Type.</string>
+    <string name="product_delete_dialog_question">Do you want to delete %s?</string>
+
+    <string name="order_delete_dialog">Delete Order.</string>
+    <string name="order_delete_dialog_question">Do you want to delete order with %d products?</string>
+
+    <string name="average">Average</string>
+
+    <string name="report_summary">Average sale: $%s</string>
+
+    <string-array name="product_brand">
+        <item>Ciel</item>
+        <item>Electropura</item>
+        <item>Bonafont</item>
+        <item>Otro</item>
+    </string-array>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+
+</resources>
