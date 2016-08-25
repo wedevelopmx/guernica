@@ -12,12 +12,16 @@ android {
             storePassword 'android'
         }
     }
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:23.0.1'
+    }
     defaultConfig {
         applicationId "mx.wedevelop.guernica"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -42,4 +46,7 @@ dependencies {
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.google.guava:guava:19.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    androidTestCompile 'com.android.support.test:runner:0.4'
+    androidTestCompile 'com.android.support.test:rules:0.4'
+
 }
