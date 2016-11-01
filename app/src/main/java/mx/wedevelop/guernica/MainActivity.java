@@ -9,7 +9,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +23,9 @@ import mx.wedevelop.guernica.fragment.SalesSummaryFragment;
 import mx.wedevelop.guernica.sqlite.model.Shift;
 import mx.wedevelop.guernica.sqlite.model.User;
 import mx.wedevelop.guernica.utils.Utils;
+import mx.wedevelop.guernica.utils.signin.SignInActivity;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends SignInActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity
 
         updateHeaderMain(navigationView, user);
         updateUI();
+
+        this.setAutoLoginEnabled(false);
     }
 
     @Override
@@ -128,12 +130,19 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
-
+            onGoogleSignOutClicked();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onSignOut() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
