@@ -12,6 +12,7 @@ import mx.wedevelop.guernica.sqlite.model.ProductType;
 import mx.wedevelop.guernica.sqlite.model.ReportItem;
 import mx.wedevelop.guernica.sqlite.model.Shift;
 import mx.wedevelop.guernica.sqlite.model.User;
+import mx.wedevelop.guernica.sqlite.model.WorkShift;
 
 /**
  * Created by root on 22/07/16.
@@ -38,14 +39,6 @@ public class GuernicaController {
     private GuernicaController(Context context) {
         dataSource = new DBDataSource(context);
         dataSource.open();
-
-        currentShift = dataSource.Shift.getLatestShift();
-        if(currentShift == null) {
-            currentShift = openShift();
-            orderList = new ArrayList<Order>();
-        } else {
-            orderList = dataSource.Order.findAll(currentShift.getId());
-        }
     }
 
     public List<ProductType> getProductTypes() {
@@ -68,6 +61,14 @@ public class GuernicaController {
 
     public void loginUser(User user) {
         currentUser = dataSource.User.findOrCreate(user);
+        openShift();
+    }
+
+    public void openShift() {
+        currentShift = dataSource.Shift.findOrCreateLatestShift(currentUser);
+        orderList = dataSource.Order.findAll(currentShift.getId());
+        earnings = 0;
+        sells = 0;
     }
 
     public User getCurrentUser() {
@@ -92,16 +93,6 @@ public class GuernicaController {
     }
 
     public Shift getCurrentShift() {
-        return currentShift;
-    }
-
-    public Shift openShift() {
-        earnings = 0;
-        sells = 0;
-        currentShift = new Shift();
-        currentShift.setUser(currentUser);
-        dataSource.Shift.save(currentShift);
-        orderList = dataSource.Order.findAll(currentShift.getId());
         return currentShift;
     }
 
@@ -150,5 +141,9 @@ public class GuernicaController {
 
     public List<ReportItem> findMonthlySummary() {
         return dataSource.Report.findMonthlySummary();
+    }
+
+    public List<WorkShift> findWorkShift() {
+        return dataSource.WorkShift.findAll();
     }
 }

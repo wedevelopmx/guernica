@@ -55,7 +55,7 @@ public class ReportActivity extends AppCompatActivity implements ViewPager.OnPag
         cost = bundle.getDouble(ReportListFragment.COST);
 
         SalesSummaryFragment salesSummaryFragment = (SalesSummaryFragment) getSupportFragmentManager().findFragmentById(R.id.sales_summary_fmt);
-        salesSummaryFragment.updateUI((int)quantity, cost);
+        salesSummaryFragment.updateUI((int)quantity, (int)cost);
     }
 
     @Override

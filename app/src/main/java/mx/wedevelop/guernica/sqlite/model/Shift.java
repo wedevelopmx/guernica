@@ -30,6 +30,7 @@ public class Shift {
     private User user;
 
     private SalesSummary salesSummary;
+    private WorkShift workShift;
 
     public Shift() {
         this.submitted = 0;
@@ -90,4 +91,13 @@ public class Shift {
     public void setSalesSummary(SalesSummary salesSummary) {
         this.salesSummary = salesSummary;
     }
+
+    public WorkShift getWorkShift() {
+        return workShift;
+    }
+
+    public void setWorkShift(WorkShift workShift) {
+        this.workShift = workShift;
+    }
+
 }

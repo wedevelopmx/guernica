@@ -3,17 +3,14 @@ package mx.wedevelop.guernica.sqlite.service;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import mx.wedevelop.guernica.sqlite.model.Model;
 import mx.wedevelop.guernica.sqlite.model.SalesSummary;
 import mx.wedevelop.guernica.sqlite.model.Shift;
+import mx.wedevelop.guernica.sqlite.model.User;
+import mx.wedevelop.guernica.sqlite.model.WorkShift;
 
 /**
  * Created by root on 22/07/16.
@@ -28,6 +25,19 @@ public class ShiftService extends Service {
             "    and s.end_time != ''" +
             "    group by s.id" +
             "    order by s.id desc";
+
+    private static final String CURRENT_SHIFT = "select ws.id as ws_id, ws.name as ws_name, ws.start_time as ws_start_time, ws.weekday as ws_weekday, " +
+            "    ifnull(s.id, 0) as id, " +
+            "    ifnull(s.start_time, 0) as start_time, " +
+            "    ifnull(s.end_time, 0) as end_time " +
+            " from work_shift ws left join shift s " +
+            "    on ws.id = s.work_shift_id " +
+            "    and strftime('%Y-%m-%d', 'now') = strftime('%Y-%m-%d', s.start_time) " +
+            " where strftime('%w','now') = ws.weekday " +
+            " order by abs( " +
+            "    (strftime('%H', ws.start_time) * 60) + strftime('%M', ws.start_time) - " +
+            "    (strftime('%H', 'now') * 60) - strftime('%M', 'now')) " +
+            "limit 1";
 
     private SQLiteDatabase db;
 
@@ -44,15 +54,26 @@ public class ShiftService extends Service {
         shift.setId((int)insertId);
     }
 
-    public Shift getLatestShift() {
-        Shift shif = null;
-        Cursor cursor = db.query(Shift.TABLE_NAME, Shift.TABLE_FIELDS, null, null, null, null, "id desc", "1");
+    public Shift findOrCreateLatestShift(User currentUser) {
+        Shift shift = null;
+        Cursor cursor = db.rawQuery(CURRENT_SHIFT, null);
         if(!cursor.isAfterLast()) {
             cursor.moveToFirst();
-            shif = parse(cursor);
+            //Process
+            shift = parse(cursor);
         }
         cursor.close();
-        return shif;
+
+        //Validate if there is a shift
+        if(shift.getId() == 0) {
+            WorkShift ws = shift.getWorkShift();
+            shift = new Shift();
+            shift.setUser(currentUser);
+            shift.setWorkShift(ws);
+            save(shift);
+        }
+
+        return shift;
     }
 
     public List<Shift> findAllUnsubmitted() {
@@ -94,6 +115,7 @@ public class ShiftService extends Service {
     private Shift parse(Cursor cursor) {
         Shift shift = new Shift();
         SalesSummary salesSummary = new SalesSummary();
+        WorkShift workShift = new WorkShift();
 
         String [] columnNames = cursor.getColumnNames();
         for(String columnName : columnNames) {
@@ -112,6 +134,19 @@ public class ShiftService extends Service {
                     shift.setEndTime(parseDate(cursor.getString(index)));
                     break;
 
+                case "ws_id":
+                    workShift.setId(cursor.getInt(index));
+                    break;
+                case "ws_name":
+                    workShift.setName(cursor.getString(index));
+                    break;
+                case "ws_weekday":
+                    workShift.setWeekday(cursor.getInt(index));
+                    break;
+                case "ws_start_time":
+                    workShift.setStartTime(parseDate(cursor.getString(index)));
+                    break;
+
                 //Summary Object for reporting
                 case "quantity":
                     salesSummary.setQuantity(cursor.getInt(index));
@@ -123,6 +158,7 @@ public class ShiftService extends Service {
         }
 
         shift.setSalesSummary(salesSummary);
+        shift.setWorkShift(workShift);
 
         return shift;
     }
@@ -134,6 +170,7 @@ public class ShiftService extends Service {
         values.put("start_time", formatDate(shift.getStartTime()));
         values.put("end_time", shift.getEndTime() != null ? formatDate(shift.getEndTime()): "");
         values.put("user_id", shift.getUser() != null ? shift.getUser().getId() : 0);
+        values.put("work_shift_id", shift.getWorkShift() != null ? shift.getWorkShift().getId() : 0);
 
         return values;
     }

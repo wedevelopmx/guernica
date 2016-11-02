@@ -36,6 +36,7 @@ public class MainActivity extends SignInActivity
     private static final int SYNC_REQUEST = 9004;
     private static final int PRODUCT_REQUEST = 9005;
     private static final int REPROT_REQUEST = 9006;
+    private static final int WORKSHIFT_REQUEST = 9007;
 
     GuernicaController controller;
 
@@ -124,6 +125,9 @@ public class MainActivity extends SignInActivity
         } else if (id == R.id.nav_product) {
             Intent intent = new Intent(MainActivity.this, ProductActivity.class);
             startActivityForResult(intent, PRODUCT_REQUEST);
+        } else if (id == R.id.nav_workshift) {
+            Intent intent = new Intent(MainActivity.this, WorkshiftActivity.class);
+            startActivityForResult(intent, WORKSHIFT_REQUEST);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, AccountActivity.class);
             startActivityForResult(intent, SETTINGS_REQUEST);

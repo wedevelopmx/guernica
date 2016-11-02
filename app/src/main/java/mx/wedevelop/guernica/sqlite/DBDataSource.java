@@ -9,6 +9,7 @@ import mx.wedevelop.guernica.sqlite.service.ProductTypeService;
 import mx.wedevelop.guernica.sqlite.service.ReportService;
 import mx.wedevelop.guernica.sqlite.service.ShiftService;
 import mx.wedevelop.guernica.sqlite.service.UserService;
+import mx.wedevelop.guernica.sqlite.service.WorkShiftService;
 
 /**
  * Created by root on 22/07/16.
@@ -19,6 +20,7 @@ public class DBDataSource {
     private SQLiteDatabase database;
 
     public UserService User;
+    public WorkShiftService WorkShift;
     public ShiftService Shift;
     public OrderService Order;
     public ProductTypeService ProductType;
@@ -32,6 +34,7 @@ public class DBDataSource {
         database = dbHelper.getWritableDatabase();
 
         ProductType = new ProductTypeService(database);
+        WorkShift = new WorkShiftService(database);
         Shift = new ShiftService(database);
         Order = new OrderService(database);
         User = new UserService(database);

@@ -14,13 +14,25 @@
         )
     </string>
     <string name="drop_table_user">drop table if exists user</string>
+    <string name="table_work_shift">
+        create table work_shift (
+          id integer primary key autoincrement,
+          name text not null,
+          weekday integer not null,
+          start_time datetime,
+          end_time datetime
+        )
+    </string>
+    <string name="drop_table_work_shift">drop table if exists work_shift</string>
     <string name="table_shift">
         create table shift (
           id integer primary key autoincrement,
           submitted integer default 0,
           start_time datetime default current_timestamp,
           end_time datetime,
+          work_shift_id integer not null,
           user_id integer not null,
+          foreign key(work_shift_id) references work_shift(id),
           foreign key(user_id) references user(id)
         )
     </string>

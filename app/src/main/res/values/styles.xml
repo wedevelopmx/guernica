@@ -28,4 +28,8 @@
         <item name="colorControlActivated">@color/colorPrimaryLight</item>
     </style>
 
+    <style name="FlatButton" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

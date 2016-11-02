@@ -110,24 +110,22 @@ public class SaleActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     Log.i(TAG, "Submitting new order");
                     Shift shift = controller.getCurrentShift();
-                    if (shift == null) {
-                        shift = controller.openShift();
-                    }
+                    if (shift != null) {
+                        Order order = new Order(totalQuantity, totalCost, shift);
+                        List<Product> productList = new ArrayList<Product>();
 
-                    Order order = new Order(totalQuantity, totalCost, shift);
-                    List<Product> productList = new ArrayList<Product>();
-
-                    Iterator it = productHash.entrySet().iterator();
-                    while (it.hasNext()) {
-                        Map.Entry<String, Product> pair = (Map.Entry<String, Product>) it.next();
-                        Product product = pair.getValue();
-                        if(product.getQuantity() > 0) {
-                            productList.add(product);
+                        Iterator it = productHash.entrySet().iterator();
+                        while (it.hasNext()) {
+                            Map.Entry<String, Product> pair = (Map.Entry<String, Product>) it.next();
+                            Product product = pair.getValue();
+                            if (product.getQuantity() > 0) {
+                                productList.add(product);
+                            }
                         }
-                    }
-                    order.setProductList(productList);
+                        order.setProductList(productList);
 
-                    controller.save(order);
+                        controller.save(order);
+                    }
 
                     setResult(RESULT_OK);
                     finish();
