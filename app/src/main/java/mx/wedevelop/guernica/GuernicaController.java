@@ -118,7 +118,7 @@ public class GuernicaController {
     public void updateStatics() {
         resetStatics();
         for(Order order : orderList) {
-            sells += order.getQuantity();
+            sells ++;
             earnings += order.getCost();
         }
     }

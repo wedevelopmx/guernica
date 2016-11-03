@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by root on 26/07/16.
  */
 public class Utils {
-    private static final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm a");
+    private static final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
     private static final SimpleDateFormat dfHour = new SimpleDateFormat("HH:mm a");
     private static final SimpleDateFormat dfDay = new SimpleDateFormat("EEE, MMM d, yyyy");
 

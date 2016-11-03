@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import mx.wedevelop.guernica.sqlite.model.SalesSummary;
@@ -32,11 +33,11 @@ public class ShiftService extends Service {
             "    ifnull(s.end_time, 0) as end_time " +
             " from work_shift ws left join shift s " +
             "    on ws.id = s.work_shift_id " +
-            "    and strftime('%Y-%m-%d', 'now') = strftime('%Y-%m-%d', s.start_time) " +
-            " where strftime('%w','now') = ws.weekday " +
+            "    and strftime('%Y-%m-%d', ?) = strftime('%Y-%m-%d', s.start_time) " +
+            " where strftime('%w',?) = ws.weekday " +
             " order by abs( " +
             "    (strftime('%H', ws.start_time) * 60) + strftime('%M', ws.start_time) - " +
-            "    (strftime('%H', 'now') * 60) - strftime('%M', 'now')) " +
+            "    (strftime('%H', ?) * 60) - strftime('%M', ?)) " +
             "limit 1";
 
     private SQLiteDatabase db;
@@ -56,7 +57,7 @@ public class ShiftService extends Service {
 
     public Shift findOrCreateLatestShift(User currentUser) {
         Shift shift = null;
-        Cursor cursor = db.rawQuery(CURRENT_SHIFT, null);
+        Cursor cursor = db.rawQuery(CURRENT_SHIFT, new String[] {formatDate(new Date()), formatDate(new Date()), formatDate(new Date()), formatDate(new Date())});
         if(!cursor.isAfterLast()) {
             cursor.moveToFirst();
             //Process

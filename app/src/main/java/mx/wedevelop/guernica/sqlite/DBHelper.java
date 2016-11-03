@@ -75,33 +75,34 @@ public class DBHelper extends SQLiteOpenHelper {
         workShiftService.save(new WorkShift(context.getString(R.string.saturday), 6, "9:00", "15:00"));
         workShiftService.save(new WorkShift(context.getString(R.string.saturday), 6, "15:00", "20:00"));
 
-//        UserService userService = new UserService(db);
-//        ShiftService shiftService = new ShiftService(db);
-//        OrderService orderService = new OrderService(db);
-//
-//        List<ProductType> productTypeList = productTypeService.findAll();
-//
-//        User user = new User("Origin", "contact@wedevelop.mx", "");
-//
-//        for(int i = 1; i < 28; i ++) {
-//            Date start = Utils.parseDate(i + "-07-2016 08:00 AM");
-//            Date end = Utils.parseDate(i + "-07-2016 020:00");
-//
-//            Log.i("Initializing", start.toString());
-//
-//
-//            Shift shift = new Shift();
-//            shift.setStartTime(start);
-//            shift.setEndTime(end);
-//            shift.setUser(user);
-//
-//            shiftService.save(shift);
-//            List<Order> orderList = generateOrder(productTypeList);
-//            for(Order order : orderList) {
-//                order.setShift(shift);
-//                orderService.save(order);
-//            }
-//        }
+        UserService userService = new UserService(db);
+        ShiftService shiftService = new ShiftService(db);
+        OrderService orderService = new OrderService(db);
+
+        List<ProductType> productTypeList = productTypeService.findAll();
+
+        User user = new User("Origin", "contact@wedevelop.mx", "");
+
+        for(int i = 1; i < 31; i ++) {
+            Date start = Utils.parseDate(i + "-10-2016 08:00");
+            Date end = Utils.parseDate(i + "-10-2016 20:00");
+
+            Log.i("Initializing", start.toString());
+
+            Shift shift = shiftService.findOrCreateLatestShift(user);
+
+            //Shift shift = new Shift();
+            shift.setStartTime(start);
+            shift.setEndTime(end);
+            //shift.setUser(user);
+
+            shiftService.update(shift);
+            List<Order> orderList = generateOrder(productTypeList);
+            for(Order order : orderList) {
+                order.setShift(shift);
+                orderService.save(order);
+            }
+        }
     }
 
     private List<Order> generateOrder(List<ProductType> productTypeList) {
