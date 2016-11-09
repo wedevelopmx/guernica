@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import mx.wedevelop.guernica.sqlite.DBDataSource;
 import mx.wedevelop.guernica.sqlite.model.Order;
@@ -13,6 +14,7 @@ import mx.wedevelop.guernica.sqlite.model.ReportItem;
 import mx.wedevelop.guernica.sqlite.model.Shift;
 import mx.wedevelop.guernica.sqlite.model.User;
 import mx.wedevelop.guernica.sqlite.model.WorkShift;
+import mx.wedevelop.guernica.sqlite.model.helper.WorkDay;
 
 /**
  * Created by root on 22/07/16.
@@ -145,5 +147,13 @@ public class GuernicaController {
 
     public List<WorkShift> findWorkShift() {
         return dataSource.WorkShift.findAll();
+    }
+
+    public List<WorkDay> findAllWorkDays() {
+        return dataSource.WorkShift.findAllWorkDays();
+    }
+
+    public void updateWorkDays(List<WorkDay> workDayList) {
+        dataSource.WorkShift.update(workDayList);
     }
 }

@@ -63,11 +63,17 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".WorkshiftActivity"
+            android:name=".WorkShiftActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".EditWorkShiftActivity"
+            android:parentActivityName=".WorkShiftActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".WorkShiftActivity" />
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -77,6 +83,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".Checkout" />
     </application>
 
 </manifest>

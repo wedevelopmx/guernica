@@ -47,8 +47,8 @@ public class LoginActivity extends SignInActivity implements View.OnClickListene
 
     @Override
     public void onSignOut() {
-        findViewById(R.id.button_google_sign_in).setVisibility(View.INVISIBLE);
-        findViewById(R.id.button_google_sign_in).setVisibility(View.INVISIBLE);
+        findViewById(R.id.button_google_sign_in).setVisibility(View.VISIBLE);
+        //findViewById(R.id.button_google_sign_in).setVisibility(View.INVISIBLE);
     }
 
     @Override

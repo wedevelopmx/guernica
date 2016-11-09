@@ -63,14 +63,22 @@
     <string name="product_name">Name</string>
     <string name="product_description">Description</string>
     <string name="product_price">Price</string>
-    <string name="workshift_header">Turnos</string>
-    <string name="workshift_sub_header">Estos son los turnos de tu planta.</string>
+    <string name="workshift_header">Shifts</string>
+    <string name="workshift_sub_header">These are the shifts in your worplace.</string>
+    <string name="edit_workshift_header">Edit Shifts</string>
+    <string name="edit_workshift_sub_header">You can edit the shift hours and save them.</string>
 
     <string name="number_field_error_msg">%s must be a number.</string>
     <string name="product_field_error_msg">You need to provide a %s.</string>
 
     <string name="product_delete_dialog">Delete Product Type.</string>
     <string name="product_delete_dialog_question">Do you want to delete %s?</string>
+
+    <string name="work_shift_dialog">Update work shifts.</string>
+    <string name="work_shift_dialog_question">Do you want to update %d work shifts?</string>
+
+    <string name="work_shift_no_item_selected">Please select at least one item from list</string>
+
 
     <string name="order_delete_dialog">Delete Order.</string>
     <string name="order_delete_dialog_question">Do you want to delete order with %d products?</string>
@@ -96,5 +104,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
+
+    <string name="morning_shift">Morning Shift</string>
+    <string name="afternoon_shift">Afternoon Shift</string>
 
 </resources>

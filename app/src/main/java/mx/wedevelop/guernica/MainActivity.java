@@ -126,7 +126,7 @@ public class MainActivity extends SignInActivity
             Intent intent = new Intent(MainActivity.this, ProductActivity.class);
             startActivityForResult(intent, PRODUCT_REQUEST);
         } else if (id == R.id.nav_workshift) {
-            Intent intent = new Intent(MainActivity.this, WorkshiftActivity.class);
+            Intent intent = new Intent(MainActivity.this, WorkShiftActivity.class);
             startActivityForResult(intent, WORKSHIFT_REQUEST);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, AccountActivity.class);

@@ -1,12 +1,15 @@
 package mx.wedevelop.guernica.sqlite.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by root on 1/11/16.
  */
-public class WorkShift extends Model {
+public class WorkShift extends Model implements Parcelable {
     public static final String TABLE_NAME = "work_shift";
     public static final String[] TABLE_FIELDS = {"id", "name", "weekday", "start_time", "end_time"};
 
@@ -76,5 +79,41 @@ public class WorkShift extends Model {
     public String getEndTimeString() {
         return formatHour(endTime);
     }
+
+    // Parcelling part
+    public WorkShift(Parcel in){
+        String[] data = new String[5];
+        in.readStringArray(data);
+        this.id = Integer.parseInt(data[0]);
+        this.name = data[1];
+        this.weekday = Integer.parseInt(data[2]);
+        this.startTime = parseHour(data[3]);
+        this.endTime = parseHour(data[4]);
+    }
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {
+                this.id + "",
+                this.name,
+                this.weekday + "",
+                formatHour(this.startTime),
+                formatHour(this.endTime)
+        });
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public WorkShift createFromParcel(Parcel in) {
+            return new WorkShift(in);
+        }
+
+        public WorkShift[] newArray(int size) {
+            return new WorkShift[size];
+        }
+    };
 
 }

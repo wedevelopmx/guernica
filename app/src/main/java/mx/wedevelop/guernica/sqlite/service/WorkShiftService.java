@@ -7,9 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import mx.wedevelop.guernica.sqlite.model.WorkShift;
+import mx.wedevelop.guernica.sqlite.model.helper.WorkDay;
 
 /**
  * Created by root on 1/11/16.
@@ -43,6 +46,38 @@ public class WorkShiftService extends Service {
 
         cursor.close();
         return list;
+    }
+
+    public List<WorkDay> findAllWorkDays() {
+        List<WorkDay> workDayList = new ArrayList<WorkDay>();
+        Map<Integer, WorkDay> map = new HashMap<Integer, WorkDay>();
+
+        Cursor cursor = db.query(WorkShift.TABLE_NAME, WorkShift.TABLE_FIELDS, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            WorkShift ws = parse(cursor);
+            WorkDay wd = null;
+            if(map.containsKey(ws.getWeekday())) {
+                wd = map.get(ws.getWeekday());
+            } else {
+                wd = new WorkDay(ws.getWeekday(), ws.getName());
+                workDayList.add(wd);
+            }
+            wd.getWorkShiftList().add(ws);
+            map.put(ws.getWeekday(), wd);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return workDayList;
+    }
+
+    public void update(List<WorkDay> workDayList) {
+        for(WorkDay wd : workDayList) {
+            List<WorkShift> workShiftList = wd.getWorkShiftList();
+            for(WorkShift ws : workShiftList)
+                update(ws);
+        }
     }
 
     public WorkShift get(int id) {
