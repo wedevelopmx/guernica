@@ -18,9 +18,11 @@ import mx.wedevelop.guernica.sqlite.model.ReportItem;
  * Created by root on 25/07/16.
  */
 public class ReportAdapter extends ArrayAdapter<ReportItem> {
+    private int summaryFmt;
 
-    public ReportAdapter(Activity context, List<ReportItem> orderList) {
+    public ReportAdapter(Activity context, List<ReportItem> orderList, int summaryfmt) {
         super(context, 0, orderList);
+        this.summaryFmt = summaryfmt;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ReportAdapter extends ArrayAdapter<ReportItem> {
         headerTextView.setText(currentItem.getHeader());
 
         TextView summaryTextView = (TextView)listItemView.findViewById(R.id.item_summary);
-        summaryTextView.setText(getContext().getString(R.string.report_summary, currentItem.getSummary()));
+        summaryTextView.setText(getContext().getString(summaryFmt, currentItem.getSummary()));
 
         TextView quantityTextView = (TextView)listItemView.findViewById(R.id.item_quantity);
         quantityTextView.setText(getContext().getString(R.string.quantity_fmt, currentItem.getQuantity()));

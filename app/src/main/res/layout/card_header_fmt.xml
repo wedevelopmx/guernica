@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/card_header"
-            android:text="Nueva Venta"
+            android:text="Header"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="@color/white"
@@ -25,16 +25,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
-        <!--<ImageButton-->
-            <!--android:src="@drawable/ic_timer_white_24dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" />-->
     </LinearLayout>
 
     <TextView
         android:id="@+id/card_sub_header"
-        android:text="12:45 PM - Vie. 26 Jun, 2016"
+        android:text="Sub Header"
         android:textSize="16dp"
         android:textColor="@color/colorPrimaryLight"
         android:layout_width="match_parent"

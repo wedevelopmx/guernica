@@ -34,13 +34,12 @@
                 tools:layout="@layout/sales_summary_fmt" />
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/shift_summary_fmt"
-            android:name="mx.wedevelop.guernica.fragment.ShiftSummaryFragment"
+        <ListView
+            android:id="@+id/shift_summary_list_view"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            tools:layout="@layout/shift_summary_fmt"/>
+            tools:listitem="@layout/shift_summary_item"></ListView>
 
     </LinearLayout>
 

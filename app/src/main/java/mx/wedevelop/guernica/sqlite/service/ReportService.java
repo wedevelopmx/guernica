@@ -14,6 +14,21 @@ import mx.wedevelop.guernica.sqlite.model.ReportItem;
  * Created by root on 28/07/16.
  */
 public class ReportService extends Service {
+    private static final String SHIFT_SUMMARY =
+            "select s.id," +
+            " strftime('%d/%m/%Y', s.start_time)  as header," +
+            " printf('%s %s %s', ws.name," +
+            " strftime('%H:%M hrs', ws.start_time)) as summary, " +
+            " count(1) as quantity," +
+            " sum(p.quantity * pt.unit_cost) as cost " +
+            " from work_shift ws  " +
+            " join shift s  on ws.id = s.work_shift_id " +
+            " join orders o on s.id = o.shift_id " +
+            " join product p on o.id = p.order_id " +
+            " join product_type pt on pt.id = p.product_type_id " +
+            " group by strftime('%H:%M', ws.start_time) , strftime('%d/%m/%Y', s.start_time) " +
+            " order by strftime('%Y/%m/%d', s.start_time) desc";
+
     private static final String DAILY_SUMMARY =
            " select strftime('%d/%m/%Y', s.start_time) as header ," +
            "  round(sum(p.quantity * pt.unit_cost)  / count(o.id), 2) as summary," +
@@ -33,8 +48,8 @@ public class ReportService extends Service {
            "  join orders o  on s.id = o.shift_id" +
            "  join product p on o.id = p.order_id" +
            "  join product_type pt on pt.id = p.product_type_id" +
-           " where s.end_time is not null" +
-           " and s.end_time != ''" +
+//           " where s.end_time is not null" +
+//           " and s.end_time != ''" +
            " group by strftime('%W', s.start_time)" +
            " order by strftime('%W', s.start_time) desc";
 
@@ -46,8 +61,8 @@ public class ReportService extends Service {
            "  join orders o  on s.id = o.shift_id" +
            "  join product p on o.id = p.order_id" +
            "  join product_type pt on pt.id = p.product_type_id" +
-           " where s.end_time is not null" +
-           "  and s.end_time != ''" +
+//           " where s.end_time is not null" +
+//           "  and s.end_time != ''" +
            " group by strftime('%m/%Y', s.start_time)" +
            " order by strftime('%Y%m', s.start_time) desc";
 
@@ -56,6 +71,10 @@ public class ReportService extends Service {
 
     public ReportService(SQLiteDatabase db) {
         this.db = db;
+    }
+
+    public List<ReportItem> findShiftSummary() {
+        return execReport(SHIFT_SUMMARY);
     }
 
     public List<ReportItem> findDailySummary() {

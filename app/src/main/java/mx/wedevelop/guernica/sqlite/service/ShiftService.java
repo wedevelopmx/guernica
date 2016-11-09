@@ -77,6 +77,28 @@ public class ShiftService extends Service {
         return shift;
     }
 
+    public Shift findOrCreateShift(User currentUser, Date date) {
+        Shift shift = null;
+        Cursor cursor = db.rawQuery(CURRENT_SHIFT, new String[] {formatDate(date), formatDate(date), formatDate(date), formatDate(date)});
+        if(!cursor.isAfterLast()) {
+            cursor.moveToFirst();
+            //Process
+            shift = parse(cursor);
+        }
+        cursor.close();
+
+        //Validate if there is a shift
+        if(shift.getId() == 0) {
+            WorkShift ws = shift.getWorkShift();
+            shift = new Shift();
+            shift.setUser(currentUser);
+            shift.setWorkShift(ws);
+            save(shift);
+        }
+
+        return shift;
+    }
+
     public List<Shift> findAllUnsubmitted() {
         List<Shift> list = new ArrayList<Shift>();
 

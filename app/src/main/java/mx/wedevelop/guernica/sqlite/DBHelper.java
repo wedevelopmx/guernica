@@ -84,26 +84,45 @@ public class DBHelper extends SQLiteOpenHelper {
         User user = new User("Origin", "contact@wedevelop.mx", "");
 
         for(int i = 1; i < 31; i ++) {
+            //Mornning
             Date start = Utils.parseDate(i + "-10-2016 08:00");
-            Date end = Utils.parseDate(i + "-10-2016 20:00");
 
             Log.i("Initializing", start.toString());
 
-            Shift shift = shiftService.findOrCreateLatestShift(user);
-
-            //Shift shift = new Shift();
+            Shift shift = shiftService.findOrCreateShift(user, start);
             shift.setStartTime(start);
-            shift.setEndTime(end);
-            //shift.setUser(user);
 
             shiftService.update(shift);
+
             List<Order> orderList = generateOrder(productTypeList);
             for(Order order : orderList) {
                 order.setShift(shift);
                 orderService.save(order);
             }
+
+            //Afternoon
+            start = Utils.parseDate(i + "-10-2016 18:00");
+
+            Log.i("Initializing", start.toString());
+
+            shift = shiftService.findOrCreateShift(user, start);
+            shift.setStartTime(start);
+
+            shiftService.update(shift);
+
+            orderList = generateOrder(productTypeList);
+            for(Order order : orderList) {
+                order.setShift(shift);
+                orderService.save(order);
+            }
+
         }
     }
+
+//    select ws.name, strftime('%H:%M', ws.start_time) as start_time , s.*
+//    from shift s , work_shift ws
+//    where ws.id = s.work_shift_id
+//    order by s.start_time, ws.start_time
 
     private List<Order> generateOrder(List<ProductType> productTypeList) {
         List<Order> orderList = new ArrayList<Order>();

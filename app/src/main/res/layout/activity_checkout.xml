@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.wedevelop.guernica.Checkout">
+    tools:context=".CheckoutActivity">
+
+    <fragment
+        android:id="@+id/card_header_fmt"
+        android:name="mx.wedevelop.guernica.fragment.CardHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/card_header_fmt"/>
 
     <ListView
+        android:id="@+id/checkout_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        tools:listitem="@layout/shift_grid_item">
-
+        tools:listitem="@layout/report_list_item">
     </ListView>
 
 </LinearLayout>

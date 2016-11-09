@@ -62,7 +62,7 @@ public class ReportListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ArrayList<ReportItem> reportList = getArguments().getParcelableArrayList(REPORT);
         ListView shiftListView = (ListView) view.findViewById(R.id.report_list_view);
-        ReportAdapter reportAdapter = new ReportAdapter(getActivity(), reportList);
+        ReportAdapter reportAdapter = new ReportAdapter(getActivity(), reportList, R.string.report_summary_avg);
         shiftListView.setAdapter(reportAdapter);
     }
 

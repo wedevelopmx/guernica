@@ -32,7 +32,7 @@ public class MainActivity extends SignInActivity
 
     private static final int SETTINGS_REQUEST = 9001;
     private static final int SELL_REQUEST = 9002;
-    private static final int SHIFT_REQUEST = 9003;
+    private static final int CHECKOUT_REQUEST = 9003;
     private static final int SYNC_REQUEST = 9004;
     private static final int PRODUCT_REQUEST = 9005;
     private static final int REPROT_REQUEST = 9006;
@@ -116,9 +116,9 @@ public class MainActivity extends SignInActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_shift) {
-            Intent intent = new Intent(MainActivity.this, ShiftActivity.class);
-            startActivityForResult(intent, SHIFT_REQUEST);
+        if (id == R.id.nav_shifts) {
+            Intent intent = new Intent(MainActivity.this, CheckoutActivity.class);
+            startActivityForResult(intent, CHECKOUT_REQUEST);
         } else if (id == R.id.nav_report) {
             Intent intent = new Intent(MainActivity.this, ReportActivity.class);
             startActivityForResult(intent, REPROT_REQUEST);
@@ -128,9 +128,9 @@ public class MainActivity extends SignInActivity
         } else if (id == R.id.nav_workshift) {
             Intent intent = new Intent(MainActivity.this, WorkShiftActivity.class);
             startActivityForResult(intent, WORKSHIFT_REQUEST);
-        } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(MainActivity.this, AccountActivity.class);
-            startActivityForResult(intent, SETTINGS_REQUEST);
+//        } else if (id == R.id.nav_settings) {
+//            Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+//            startActivityForResult(intent, SETTINGS_REQUEST);
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
@@ -154,7 +154,7 @@ public class MainActivity extends SignInActivity
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "MainActivity.onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
         switch (requestCode) {
-            case SHIFT_REQUEST:
+            case CHECKOUT_REQUEST:
                 if(resultCode == RESULT_OK) {
 
                 }

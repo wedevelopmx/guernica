@@ -49,6 +49,8 @@ public class GuernicaController {
         return productTypeList;
     }
 
+    public Shift findShift(int id) { return dataSource.Shift.get(id); }
+
     public List<Shift> getShiftList() {
         return dataSource.Shift.findAll();
     }
@@ -131,6 +133,10 @@ public class GuernicaController {
 
     public int getSells() {
         return sells;
+    }
+
+    public List<ReportItem> findShiftSummary() {
+        return dataSource.Report.findShiftSummary();
     }
 
     public List<ReportItem> findDailySummary() {

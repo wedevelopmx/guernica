@@ -21,7 +21,7 @@
     <string name="nav_report">Reporte</string>
     <string name="nav_sync">Sincronizacion</string>
     <string name="nav_settings">Configuracion</string>
-    <string name="nav_product">Producto</string>
+    <string name="nav_product">Catalogo</string>
     <string name="nav_communicate">Comunicacion</string>
     <string name="nav_help">Ayuda</string>
     <string name="title_activity_settings">Settings</string>
@@ -83,6 +83,27 @@
     <string name="daily">Diario</string>
     <string name="monthly">Mensual</string>
     <string name="weekly">Semanal</string>
+    <string name="afternoon_shift">Acepto</string>
+    <string name="checkout_header">Turnos</string>
+    <string name="checkout_sub_header">Estos son los turnos registrados.</string>
+    <string name="morning_shift">Turno matutino</string>
+    <string name="nav_admin">Administracion</string>
+    <string name="monday">Lunes</string>
+    <string name="nav_logout">Salir</string>
+    <string name="nav_shifts">Turnos</string>
+    <string name="nav_workshift">Horarios</string>
+    <string name="report_summary_avg">Ventas promedio: $%s</string>
+    <string name="report_summary_shift">Turno: %s</string>
+    <string name="saturday">Sabado</string>
+    <string name="sunday">Domingo</string>
+    <string name="thursday">Jueves</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miercoles</string>
+    <string name="work_shift_dialog">Actualizar los turnos de trabajo</string>
+    <string name="work_shift_dialog_question">Quieres actualizar %d turnos?</string>
+    <string name="work_shift_no_item_selected">Por favor selecciona al menos un item de la lista</string>
+    <string name="workshift_header">Horarios</string>
+    <string name="workshift_sub_header">Estos son los turnos de tu planta.</string>
 
 
 </resources>
