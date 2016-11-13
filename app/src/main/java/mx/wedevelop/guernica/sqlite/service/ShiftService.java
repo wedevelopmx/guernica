@@ -35,10 +35,23 @@ public class ShiftService extends Service {
             "    on ws.id = s.work_shift_id " +
             "    and strftime('%Y-%m-%d', ?) = strftime('%Y-%m-%d', s.start_time) " +
             " where strftime('%w',?) = ws.weekday " +
-            " order by abs( " +
-            "    (strftime('%H', ws.start_time) * 60) + strftime('%M', ws.start_time) - " +
-            "    (strftime('%H', ?) * 60) - strftime('%M', ?)) " +
+            " and (strftime('%H', ws.start_time) * 60)  <= (strftime('%H', ?) * 60) " +
+            " and (strftime('%H', ws.end_time) * 60)  > (strftime('%H', ?) * 60) " +
             "limit 1";
+
+    private static final String NEAR_SHIFT = "select ws.id as ws_id, ws.name as ws_name, ws.start_time as ws_start_time, ws.weekday as ws_weekday, " +
+            " ifnull(s.id, 0) as id, " +
+            " ifnull(s.start_time, 0) as start_time, " +
+            " ifnull(s.end_time, 0) as end_time " +
+            " from work_shift ws left join shift s " +
+            " on ws.id = s.work_shift_id " +
+            " and strftime('%Y-%m-%d', ?) = strftime('%Y-%m-%d', s.start_time) " +
+            " where strftime('%w',?) = ws.weekday " +
+            " order by  abs( " +
+            " (strftime('%H', ws.start_time) * 60) + strftime('%M', ws.start_time) - " +
+            " ((strftime('%H', ?) * 60) - strftime('%M', ?)) " +
+            " ) " +
+            " limit 1";
 
     private SQLiteDatabase db;
 
@@ -64,6 +77,16 @@ public class ShiftService extends Service {
             shift = parse(cursor);
         }
         cursor.close();
+
+        if(shift == null) {
+            cursor = db.rawQuery(NEAR_SHIFT, new String[] {formatDate(new Date()), formatDate(new Date()), formatDate(new Date()), formatDate(new Date())});
+            if(!cursor.isAfterLast()) {
+                cursor.moveToFirst();
+                //Process
+                shift = parse(cursor);
+            }
+            cursor.close();
+        }
 
         //Validate if there is a shift
         if(shift.getId() == 0) {

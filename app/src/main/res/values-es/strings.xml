@@ -50,7 +50,7 @@
 
     <string name="main_header">Turno actual</string>
     <string name="sales_header">Nueva venta</string>
-    <string name="shift_header">Turno actual</string>
+    <string name="shift_header">Detalles</string>
     <string name="sync_header">Turnos almacenados</string>
     <string name="sync_sub_header">Sincronizar para poder ver los graficos avanzados en nuestro sitio.</string>
     <string name="report_header">Reporte</string>
@@ -84,13 +84,13 @@
     <string name="monthly">Mensual</string>
     <string name="weekly">Semanal</string>
     <string name="afternoon_shift">Acepto</string>
-    <string name="checkout_header">Turnos</string>
-    <string name="checkout_sub_header">Estos son los turnos registrados.</string>
+    <string name="checkout_header">Ingresos</string>
+    <string name="checkout_sub_header">Estos son los ingresos registrados.</string>
     <string name="morning_shift">Turno matutino</string>
     <string name="nav_admin">Administracion</string>
     <string name="monday">Lunes</string>
     <string name="nav_logout">Salir</string>
-    <string name="nav_shifts">Turnos</string>
+    <string name="nav_shifts">Ingresos</string>
     <string name="nav_workshift">Horarios</string>
     <string name="report_summary_avg">Ventas promedio: $%s</string>
     <string name="report_summary_shift">Turno: %s</string>
@@ -104,6 +104,9 @@
     <string name="work_shift_no_item_selected">Por favor selecciona al menos un item de la lista</string>
     <string name="workshift_header">Horarios</string>
     <string name="workshift_sub_header">Estos son los turnos de tu planta.</string>
+    <string name="friday">Viernes</string>
+    <string name="edit_workshift_header">Edición de turnos</string>
+    <string name="edit_workshift_sub_header">Puedes editar el horario de cada turno.</string>
 
 
 </resources>

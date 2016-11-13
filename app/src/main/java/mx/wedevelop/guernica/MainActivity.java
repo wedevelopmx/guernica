@@ -3,6 +3,7 @@ package mx.wedevelop.guernica;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -37,6 +38,7 @@ public class MainActivity extends SignInActivity
     private static final int PRODUCT_REQUEST = 9005;
     private static final int REPROT_REQUEST = 9006;
     private static final int WORKSHIFT_REQUEST = 9007;
+    private static final int HELP_REQUEST = 9008;
 
     GuernicaController controller;
 
@@ -70,7 +72,8 @@ public class MainActivity extends SignInActivity
         Shift currentShift = controller.getCurrentShift();
 
         CardHeader header = (CardHeader) getSupportFragmentManager().findFragmentById(R.id.card_header_fmt);
-        header.updateUI(getString(R.string.main_header), Utils.formatDate(currentShift.getStartTime()));
+        header.updateUI(getString(R.string.main_header), Utils.formatDate(currentShift.getStartTime()) + " " +
+                Utils.formatHour(currentShift.getWorkShift().getStartTime()));
 
         updateHeaderMain(navigationView, user);
         updateUI();
@@ -132,7 +135,8 @@ public class MainActivity extends SignInActivity
 //            Intent intent = new Intent(MainActivity.this, AccountActivity.class);
 //            startActivityForResult(intent, SETTINGS_REQUEST);
         } else if (id == R.id.nav_help) {
-
+            Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+            startActivityForResult(intent, HELP_REQUEST);
         } else if (id == R.id.nav_logout) {
             onGoogleSignOutClicked();
         }

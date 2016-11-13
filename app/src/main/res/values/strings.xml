@@ -17,7 +17,7 @@
     <string name="sign_in_email_cta">Sign In with Email</string>
     <string name="sign_out">Sign Out</string>
 
-    <string name="nav_shifts">Shifts</string>
+    <string name="nav_shifts">Income</string>
     <string name="nav_report">Report</string>
     <string name="nav_sync">Sync</string>
     <string name="nav_settings">Settings</string>
@@ -53,7 +53,7 @@
 
     <string name="main_header">Current Shift</string>
     <string name="sales_header">New Sale</string>
-    <string name="shift_header">Current Shift</string>
+    <string name="shift_header">Shift Details</string>
     <string name="sync_header">Stored Shifts</string>
     <string name="sync_sub_header">Synchronize in order to see charts on our site.</string>
     <string name="report_header">Report</string>
@@ -67,8 +67,8 @@
     <string name="workshift_sub_header">These are the shifts in your worplace.</string>
     <string name="edit_workshift_header">Edit Shifts</string>
     <string name="edit_workshift_sub_header">You can edit the shift hours and save them.</string>
-    <string name="checkout_header">Shifts</string>
-    <string name="checkout_sub_header">These are the shifts regitered.</string>
+    <string name="checkout_header">Income</string>
+    <string name="checkout_sub_header">These are the incomes regitered.</string>
 
     <string name="number_field_error_msg">%s must be a number.</string>
     <string name="product_field_error_msg">You need to provide a %s.</string>
@@ -110,5 +110,22 @@
 
     <string name="morning_shift">Morning Shift</string>
     <string name="afternoon_shift">Afternoon Shift</string>
+    <string name="nav_shift">Income</string>
+
+    <string name="login_terms">By sign in you agree to Guernica <a href="http://aguasguernica.com">term and conditions</a></string>
+
+
+    <string name="help_app_version">v1.0.0</string>
+    <string name="help_faq">FAQ</string>
+    <string name="help_faq_desc">Learn more about Guernica application</string>
+
+    <string name="help_donation">Donations</string>
+    <string name="help_donation_desc">Help us keep improving our application</string>
+
+    <string name="help_created_by">\u00A9 2016 Crafted with love by</string>
+
+    <string name="faq_url">http://aguasguernica.com/faq</string>
+    <string name="donate_url">http://aguasguernica.com/donate</string>
+    <string name="wedevelop_url">http://wedevelop.mx</string>
 
 </resources>

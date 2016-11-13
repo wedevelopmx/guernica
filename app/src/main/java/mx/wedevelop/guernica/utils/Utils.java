@@ -25,7 +25,7 @@ public class Utils {
     }
 
     public static String formatDateHour(Date dateField) {
-        return df.format(dateField);
+        return dfDay.format(dateField) + " " + dfHour.format(dateField);
     }
 
     public static String formatHour(Date dateField) {

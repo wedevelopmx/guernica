@@ -216,7 +216,7 @@ public abstract class SignInActivity extends AppCompatActivity implements
 
     }
 
-    private void saveCredentialIfConnected(Credential credential) {
+    private void saveCredentialIfConnected(final Credential credential) {
         if (credential == null) {
             return;
         }
@@ -244,6 +244,7 @@ public abstract class SignInActivity extends AppCompatActivity implements
 
     private void requestCredentials(final boolean shouldResolve, boolean onlyPasswords) {
         CredentialRequest.Builder crBuilder = new CredentialRequest.Builder()
+                .setAccountTypes(IdentityProviders.GOOGLE)
                 .setPasswordLoginSupported(true);
 
         if (!onlyPasswords) {

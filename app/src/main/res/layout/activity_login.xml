@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/white"
     tools:context="mx.wedevelop.guernica.LoginActivity">
 
     <LinearLayout
@@ -16,15 +17,6 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:textSize="32sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <ImageView
             android:src="@drawable/guernica"
@@ -37,7 +29,20 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+            android:textColor="@color/white"
+            android:background="@drawable/login_button"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/login_terms"
+            android:text="@string/login_terms"
+            android:textSize="10dp"
+            android:textAlignment="center"
+            android:linksClickable="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 

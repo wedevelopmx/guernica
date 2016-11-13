@@ -3,8 +3,12 @@ package mx.wedevelop.guernica;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import mx.wedevelop.guernica.sqlite.model.User;
 import mx.wedevelop.guernica.utils.signin.SignInActivity;
@@ -29,6 +33,8 @@ public class LoginActivity extends SignInActivity implements View.OnClickListene
 
         // Other buttons
         findViewById(R.id.button_google_sign_in).setOnClickListener(this);
+        ((TextView)findViewById(R.id.login_terms)).setMovementMethod(LinkMovementMethod.getInstance());
+        //Linkify.addLinks((TextView) findViewById(R.id.login_terms), Linkify.WEB_URLS);
 
         mProgressBar = (ProgressBar) findViewById(R.id.login_progress);
     }
@@ -38,7 +44,8 @@ public class LoginActivity extends SignInActivity implements View.OnClickListene
         User user = new User(gsa.getDisplayName(), gsa.getEmail(), gsa.getPhotoUrl() != null ? gsa.getPhotoUrl().toString() : "");
         controller.loginUser(user);
 
-        findViewById(R.id.button_google_sign_in).setVisibility(View.GONE);
+        findViewById(R.id.button_google_sign_in).setVisibility(View.INVISIBLE);
+        findViewById(R.id.login_terms).setVisibility(View.INVISIBLE);
 
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
