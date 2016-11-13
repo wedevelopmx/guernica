@@ -110,6 +110,16 @@ public class ShiftService extends Service {
         }
         cursor.close();
 
+        if(shift == null) {
+            cursor = db.rawQuery(NEAR_SHIFT, new String[] {formatDate(date), formatDate(date), formatDate(date), formatDate(date)});
+            if(!cursor.isAfterLast()) {
+                cursor.moveToFirst();
+                //Process
+                shift = parse(cursor);
+            }
+            cursor.close();
+        }
+
         //Validate if there is a shift
         if(shift.getId() == 0) {
             WorkShift ws = shift.getWorkShift();

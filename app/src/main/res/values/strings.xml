@@ -122,10 +122,16 @@
     <string name="help_donation">Donations</string>
     <string name="help_donation_desc">Help us keep improving our application</string>
 
+    <string name="help_sample">Sample Data</string>
+    <string name="help_sample_desc">Create sample data in order to test the application</string>
+    <string name="help_sample_error">You already have sample data</string>
+    <string name="help_sample_success">Data has been initialized</string>
+
     <string name="help_created_by">\u00A9 2016 Crafted with love by</string>
 
     <string name="faq_url">http://aguasguernica.com/faq</string>
     <string name="donate_url">http://aguasguernica.com/donate</string>
     <string name="wedevelop_url">http://wedevelop.mx</string>
 
+    <string name="sp_sample_data">sp_sample_data</string>
 </resources>

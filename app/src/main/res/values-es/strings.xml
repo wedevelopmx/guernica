@@ -107,6 +107,14 @@
     <string name="friday">Viernes</string>
     <string name="edit_workshift_header">Edición de turnos</string>
     <string name="edit_workshift_sub_header">Puedes editar el horario de cada turno.</string>
+    <string name="help_donation">Donaciones</string>
+    <string name="help_donation_desc">Ayúdanos a mejorar la aplicación</string>
+    <string name="help_faq_desc">Aprende mas sobre la aplicación</string>
+    <string name="login_terms">Al entrar aceptas los <a href="http://aguasguernica.com">términos y condiciones</a></string>
+    <string name="help_sample">Datos de ejemplo</string>
+    <string name="help_sample_desc">Creamos un conjunto de datos para que pruebes la aplicación</string>
+    <string name="help_sample_error">Ya tienes un conjunto de datos </string>
+    <string name="help_sample_success">Los datos han sido inicializados</string>
 
 
 </resources>
