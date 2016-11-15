@@ -162,8 +162,4 @@ public class GuernicaController {
     public void updateWorkDays(List<WorkDay> workDayList) {
         dataSource.WorkShift.update(workDayList);
     }
-
-    public void generateSampleData() {
-        dataSource.createSample(new Date());
-    }
 }

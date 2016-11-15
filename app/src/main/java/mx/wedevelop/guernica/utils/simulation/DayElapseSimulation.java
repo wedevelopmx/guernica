@@ -8,6 +8,7 @@ import java.util.Date;
  * Created by root on 13/11/16.
  */
 public class DayElapseSimulation {
+    private int simulationDays;
     private Calendar endDate;
     protected Calendar calendar;
 
@@ -17,6 +18,7 @@ public class DayElapseSimulation {
         calendar = Calendar.getInstance();
         calendar.setTime(simEndDate);
         calendar.add(Calendar.MONTH, -months);
+        simulationDays = endDate.get(Calendar.DAY_OF_YEAR) - calendar.get(Calendar.DAY_OF_YEAR);
     }
 
     public Date today() {
@@ -27,6 +29,10 @@ public class DayElapseSimulation {
         calendar.add(Calendar.DAY_OF_MONTH, 1);
         return !(calendar.get(Calendar.YEAR) == endDate.get(Calendar.YEAR) &&
                 calendar.get(Calendar.DAY_OF_YEAR) == endDate.get(Calendar.DAY_OF_YEAR));
+    }
+
+    public int percentage() {
+        return 100 - (100 * (endDate.get(Calendar.DAY_OF_YEAR) - calendar.get(Calendar.DAY_OF_YEAR)) / simulationDays);
     }
 }
 

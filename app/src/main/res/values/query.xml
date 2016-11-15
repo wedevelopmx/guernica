@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="database_name">guernica.db</string>
-    <string name="database_date_format">yyyy-MM-dd HH:mm:ss</string>
+    <string name="database_name" translatable="false">guernica.db</string>
+    <string name="database_date_format" translatable="false">yyyy-MM-dd HH:mm:ss</string>
 
-    <string name="table_user">
+    <string name="table_user" translatable="false">
         create table user (
           id integer primary key autoincrement,
           display_name text not null,
@@ -13,8 +13,8 @@
           created_date datetime default current_timestamp
         )
     </string>
-    <string name="drop_table_user">drop table if exists user</string>
-    <string name="table_work_shift">
+    <string name="drop_table_user" translatable="false">drop table if exists user</string>
+    <string name="table_work_shift" translatable="false">
         create table work_shift (
           id integer primary key autoincrement,
           name text not null,
@@ -23,8 +23,8 @@
           end_time datetime
         )
     </string>
-    <string name="drop_table_work_shift">drop table if exists work_shift</string>
-    <string name="table_shift">
+    <string name="drop_table_work_shift" translatable="false">drop table if exists work_shift</string>
+    <string name="table_shift" translatable="false">
         create table shift (
           id integer primary key autoincrement,
           submitted integer default 0,
@@ -36,8 +36,8 @@
           foreign key(user_id) references user(id)
         )
     </string>
-    <string name="drop_table_shift">drop table if exists shift</string>
-     <string name="table_order">
+    <string name="drop_table_shift" translatable="false">drop table if exists shift</string>
+     <string name="table_order" translatable="false">
         create table orders (
           id integer primary key autoincrement,
           created_date datetime default current_timestamp,
@@ -45,8 +45,8 @@
           foreign key(shift_id) references shift(id)
         )
     </string>
-    <string name="drop_table_order">drop table if exists orders</string>
-     <string name="table_product">
+    <string name="drop_table_order" translatable="false">drop table if exists orders</string>
+     <string name="table_product" translatable="false">
         create table product (
           id integer primary key autoincrement,
           quantity integer not null,
@@ -57,8 +57,8 @@
           foreign key(product_type_id) references product_type(id)
         )
     </string>
-    <string name="drop_table_product">drop table if exists product</string>
-    <string name="table_product_type">
+    <string name="drop_table_product" translatable="false">drop table if exists product</string>
+    <string name="table_product_type" translatable="false">
         create table product_type (
           id integer primary key autoincrement,
           name text not null,
@@ -67,5 +67,5 @@
           created_date datetime default current_timestamp
         )
     </string>
-    <string name="drop_table_product_type">drop table if exists product_type</string>
+    <string name="drop_table_product_type" translatable="false">drop table if exists product_type</string>
 </resources>

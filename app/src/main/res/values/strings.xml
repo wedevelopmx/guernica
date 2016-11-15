@@ -115,8 +115,8 @@
     <string name="login_terms">By sign in you agree to Guernica <a href="http://aguasguernica.com">term and conditions</a></string>
 
 
-    <string name="help_app_version">v1.0.0</string>
-    <string name="help_faq">FAQ</string>
+    <string name="help_app_version" translatable="false">v1.0.0</string>
+    <string name="help_faq" translatable="false">FAQ</string>
     <string name="help_faq_desc">Learn more about Guernica application</string>
 
     <string name="help_donation">Donations</string>
@@ -127,11 +127,12 @@
     <string name="help_sample_error">You already have sample data</string>
     <string name="help_sample_success">Data has been initialized</string>
 
-    <string name="help_created_by">\u00A9 2016 Crafted with love by</string>
+    <string name="help_created_by" translatable="false">\u00A9 2016 Crafted with love by</string>
 
-    <string name="faq_url">http://aguasguernica.com/faq</string>
-    <string name="donate_url">http://aguasguernica.com/donate</string>
-    <string name="wedevelop_url">http://wedevelop.mx</string>
+    <string name="faq_url" translatable="false">http://aguasguernica.com/faq</string>
+    <string name="donate_url" translatable="false">http://aguasguernica.com/donate</string>
+    <string name="wedevelop_url" translatable="false">http://wedevelop.mx</string>
 
-    <string name="sp_sample_data">sp_sample_data</string>
+    <string name="sp_sample_data" translatable="false">sp_sample_data</string>
+    <string name="report_summary">Average Sells</string>
 </resources>

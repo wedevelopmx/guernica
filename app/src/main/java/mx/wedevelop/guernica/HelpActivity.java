@@ -1,21 +1,36 @@
 package mx.wedevelop.guernica;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class HelpActivity extends AppCompatActivity implements View.OnClickListener {
+import mx.wedevelop.guernica.task.SampleDataTaskFragment;
+
+public class HelpActivity extends AppCompatActivity implements View.OnClickListener, SampleDataTaskFragment.TaskCallbacks {
+
+    private static final String TAG_TASK_FRAGMENT = "task_fragment";
+
+    private SampleDataTaskFragment mTaskFragment;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        FragmentManager fm = getSupportFragmentManager();
+        mTaskFragment = (SampleDataTaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
+
+        progressBar = (ProgressBar) findViewById(R.id.sample_data_progress);
 
         LinearLayout faq = (LinearLayout) findViewById(R.id.help_faq);
         faq.setOnClickListener(this);
@@ -45,7 +60,6 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, getString(R.string.help_sample_error), Toast.LENGTH_SHORT).show();
                 } else {
                     createSampleData();
-                    Toast.makeText(this, getString(R.string.help_sample_success), Toast.LENGTH_SHORT).show();
                 }
 
                 return;
@@ -57,10 +71,45 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void createSampleData() {
-        GuernicaController.getController(this).generateSampleData();
+
+        // If the Fragment is non-null, then it is currently being
+        // retained across a configuration change.
+        FragmentManager fm = getSupportFragmentManager();
+        if (mTaskFragment == null) {
+            mTaskFragment = new SampleDataTaskFragment();
+            fm.beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
+        }
+
+    }
+
+    @Override
+    public void onPreExecute() {
+        progressBar.setMax(100);
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onProgressUpdate(int percent) {
+        progressBar.setProgress(percent);
+    }
+
+    @Override
+    public void onCancelled() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onPostExecute() {
+        //Update preferences
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(getString(R.string.sp_sample_data), true);
         editor.commit();
+
+        //Hide progress bar
+        progressBar.setVisibility(View.GONE);
+
+        //Show toast
+        Toast.makeText(this, getString(R.string.help_sample_success), Toast.LENGTH_SHORT).show();
     }
 }
