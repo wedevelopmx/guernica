@@ -24,33 +24,9 @@ import mx.wedevelop.guernica.utils.simulation.ShiftElapseSimulation;
 /**
  * Created by root on 14/11/16.
  */
-public class SampleDataTaskFragment extends Fragment {
+public class SampleDataTaskFragment extends TaskFragment {
 
-    /**
-     * Callback interface through which the fragment will report the
-     * task's progress and results back to the Activity.
-     */
-    public interface TaskCallbacks {
-        void onPreExecute();
-        void onProgressUpdate(int percent);
-        void onCancelled();
-        void onPostExecute();
-    }
-
-    private TaskCallbacks mCallbacks;
-    private SampleDataTask mTask;
-
-    /**
-     * Hold a reference to the parent Activity so we can report the
-     * task's current progress and results. The Android framework
-     * will pass us a reference to the newly created Activity after
-     * each configuration change.
-     */
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mCallbacks = (TaskCallbacks) activity;
-    }
+    private Task mTask;
 
     /**
      * This method will only be called once when the retained
@@ -60,22 +36,9 @@ public class SampleDataTaskFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Retain this fragment across configuration changes.
-        setRetainInstance(true);
-
         // Create and execute the background task.
-        mTask = new SampleDataTask();
+        mTask = new Task();
         mTask.execute();
-    }
-
-    /**
-     * Set the callback to null so we don't accidentally leak the
-     * Activity instance.
-     */
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mCallbacks = null;
     }
 
     /**
@@ -86,7 +49,7 @@ public class SampleDataTaskFragment extends Fragment {
      * method in case they are invoked after the Activity's and
      * Fragment's onDestroy() method have been called.
      */
-    private class SampleDataTask extends AsyncTask<Void, Integer, Void> {
+    private class Task extends AsyncTask<Void, Integer, Void> {
 
         private DBHelper dbHelper;
         private SQLiteDatabase database;

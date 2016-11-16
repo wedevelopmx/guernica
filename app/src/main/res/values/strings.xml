@@ -127,6 +127,17 @@
     <string name="help_sample_error">You already have sample data</string>
     <string name="help_sample_success">Data has been initialized</string>
 
+    <string name="help_reset">Reset Data</string>
+    <string name="help_reset_desc">Errase all data from the application</string>
+    <string name="help_reset_error">You have already delete data</string>
+    <string name="help_reset_success">Data has been reset</string>
+
+    <string name="reset_dialog">Reset Data</string>
+    <string name="reset_dialog_question">Are you sure you want to delete all data from application?</string>
+
+    <string name="sample_dialog">Sample Data</string>
+    <string name="sample_dialog_question">Are you sure you want to overwrite data into your application?</string>
+
     <string name="help_created_by" translatable="false">\u00A9 2016 Crafted with love by</string>
 
     <string name="faq_url" translatable="false">http://aguasguernica.com/faq</string>

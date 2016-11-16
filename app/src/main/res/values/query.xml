@@ -37,6 +37,7 @@
         )
     </string>
     <string name="drop_table_shift" translatable="false">drop table if exists shift</string>
+    <string name="delete_all_shifts" translatable="false">delete from shift</string>
      <string name="table_order" translatable="false">
         create table orders (
           id integer primary key autoincrement,
@@ -46,6 +47,7 @@
         )
     </string>
     <string name="drop_table_order" translatable="false">drop table if exists orders</string>
+    <string name="delete_all_orders" translatable="false">delete from orders</string>
      <string name="table_product" translatable="false">
         create table product (
           id integer primary key autoincrement,
@@ -58,6 +60,7 @@
         )
     </string>
     <string name="drop_table_product" translatable="false">drop table if exists product</string>
+    <string name="delete_all_products" translatable="false">delete from product</string>
     <string name="table_product_type" translatable="false">
         create table product_type (
           id integer primary key autoincrement,

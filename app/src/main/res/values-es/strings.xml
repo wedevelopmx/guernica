@@ -115,6 +115,14 @@
     <string name="help_sample_desc">Creamos un conjunto de datos para que pruebes la aplicación</string>
     <string name="help_sample_error">Ya tienes un conjunto de datos </string>
     <string name="help_sample_success">Los datos han sido inicializados</string>
+    <string name="help_reset">Borrar Datos</string>
+    <string name="help_reset_error">Ya has borrado los datos</string>
+    <string name="help_reset_desc">Borrar todos los datos almacenados</string>
+    <string name="help_reset_success">Los datos han sido borrados</string>
+    <string name="reset_dialog">Borrar Datos</string>
+    <string name="reset_dialog_question">Esta seguro de querer borrar todos lod datos de la aplicación?</string>
+    <string name="sample_dialog">Datos de ejemplo</string>
+    <string name="sample_dialog_question">Los datos actuales se perderan. Esta seguro de querer escribir datos en la aplicación?</string>
 
 
 </resources>
